@@ -8,6 +8,10 @@ io.on("connection", (socket) => {
     io.emit("chat msg", msg);
     console.log("chat msg: " + msg);
   });
+  socket.on("drawing", (data) => {
+    console.log("drawing");
+    socket.broadcast.emit("drawing", data);
+  });
 });
 
 http.listen(3001, () => {
