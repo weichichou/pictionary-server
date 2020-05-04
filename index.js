@@ -12,6 +12,10 @@ io.on("connection", (socket) => {
     console.log("drawing");
     socket.broadcast.emit("drawing", data);
   });
+  socket.on("question", (word) => {
+    console.log("question selected");
+    socket.broadcast.emit("question", word);
+  });
 });
 
 http.listen(3001, () => {
