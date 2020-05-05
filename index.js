@@ -15,7 +15,7 @@ io.on("connection", (socket) => {
   });
   socket.on("question", (word) => {
     console.log("question selected");
-    socket.broadcast.emit("question", word);
+    io.emit("question", word);
   });
 
   socket.on("roundover", (username) => {
