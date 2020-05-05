@@ -4,6 +4,7 @@ const io = require("socket.io")(http);
 
 io.on("connection", (socket) => {
   console.log("a user connected");
+
   socket.on("chat msg", (msg) => {
     io.emit("chat msg", msg);
     console.log("chat msg: " + msg);
@@ -15,6 +16,11 @@ io.on("connection", (socket) => {
   socket.on("question", (word) => {
     console.log("question selected");
     socket.broadcast.emit("question", word);
+  });
+
+  socket.on("roundover", (username) => {
+    console.log(`${username} wins`);
+    io.emit("roundover", username);
   });
 });
 
